@@ -8,7 +8,7 @@ import os
 from sklearn.model_selection import train_test_split
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
-
+from src.components.model_trainer import ModeTrainer
 
 
 @dataclass
@@ -41,8 +41,11 @@ if __name__=="__main__":
     obj=DataInjetion()
     train_data,test_data=obj.initiate_data_injetion()
     data_transformation=DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    train_array,test_array,_=data_transformation.initiate_data_transformation(train_data,test_data)
+    modeltrain=ModeTrainer()
+    print(modeltrain.initiate_model_trainer(train_array,test_array))
 
+    
 
 
 
